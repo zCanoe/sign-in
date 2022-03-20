@@ -56,8 +56,8 @@ function handle() {
     for (let index in user) {
         student.username = user[index];
         student.pd_mm = pwd[index];
-        tools.username = student.username;
-        tools.pwd = student.pd_mm;
+        tools1.username = student.username;
+        tools1.pwd = student.pd_mm;
         tools1.login(student).then(()=> {
             tools1.attend(student, serverJiang[index], data).then();
         })

@@ -19,7 +19,7 @@ class tools{
                 pd_mm: this.getPW(),
             },
             true
-        ).then(res => console.log("res"));
+        ).then(res => console.log("res",res));
         student.cookie = ((await net.getCookies()).split(";"))[0];
     }
 
@@ -40,8 +40,8 @@ class tools{
             console.log("name", student.cookie);
             let net = new Net("https://xsgz.hufe.edu.cn");
             net.setCookie(student.cookie).then(() => {
-                net.get(Net.lastone, '', true).then((r) => {
                     net.post(Net.submit, data, true).then(res => {
+                        console.log(res);
                         let sendWechat = {
                             title: "打卡",
                             desp: '',
@@ -50,9 +50,8 @@ class tools{
                         else sendWechat.desp = "打卡失败！";
                         // SEN TO WECHAT
                         let sw = new Net(Net.wechat);
-                        sw.post(`${server}.send`, sendWechat, true).then(() => {});
+                       // sw.post(`${server}.send`, sendWechat, true).then(() => {});
                     })
-                }).catch(Error => console.log(Error))
             }).catch(Error => console.log(Error))
         })
     }

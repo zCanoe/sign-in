@@ -85,11 +85,9 @@ class Net {
             body: params,
         });
         //console.log(await res.text(),res.headers);
-
         if (savecookie)
             if (res.headers.has("set-cookie"))
                 await this.setCookie(res.headers.get("set-cookie"));
-
         return res.text();
     }
 }
@@ -104,7 +102,7 @@ Net.parseCookies = function (cookies) {
 };
 Net.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.149 Safari/537.36";
 Net.login = "/website/login";
-Net.submit = `content/student/temp/zzdk`
+Net.submit = `/content/student/temp/zzdk?_t_s_=${new Date().getTime()}`
 Net.list = `content/tabledata/student/temp/zzdk?bSortable_0=false&bSortable_1=true&iSortingCols=1&iDisplayStart=0&iDisplayLength=12&iSortCol_0=1&sSortDir_0=desc`
 Net.lastone = `/content/student/temp/zzdk/lastone`
 Net.edit = `/wap/menu/student/temp/zzdk/_child_/edit`
