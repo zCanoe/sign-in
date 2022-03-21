@@ -50,7 +50,7 @@ class tools{
                         else sendWechat.desp = "打卡失败！";
                         // SEN TO WECHAT
                         let sw = new Net(Net.wechat);
-                       // sw.post(`${server}.send`, sendWechat, true).then(() => {});
+                        sw.post(`${server}.send`, sendWechat, true).then(() => {});
                     })
             }).catch(Error => console.log(Error))
         })
