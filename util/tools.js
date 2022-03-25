@@ -41,13 +41,14 @@ class tools{
             let net = new Net("https://xsgz.hufe.edu.cn");
             net.setCookie(student.cookie).then(() => {
                     net.post(Net.submit, data, true).then(res => {
+                        res = JSON.parse(res);
                         console.log(res);
                         let sendWechat = {
                             title: "打卡",
                             desp: '',
                         }
                         if (res.result) sendWechat.desp = "打卡成功！";
-                        else sendWechat.desp = "打卡失败！";
+                        else sendWechat.desp = "打卡失败";
                         // SEN TO WECHAT
                         let sw = new Net(Net.wechat);
                         sw.post(`${server}.send`, sendWechat, true).then(() => {});
