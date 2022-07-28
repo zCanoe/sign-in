@@ -16,7 +16,7 @@ const data = {
     'jzdXian.dm':	'430104',
     'jzdDz':	`学校`,
     'jzdDz2':	`湖南省长沙市`,
-    'lxdh':	`1856954519`,
+    'lxdh':	`   `,
     'sfzx':	'1',
     'sfzx1':	`在校`,
     'twM.dm': "01",
