@@ -47,8 +47,8 @@ class tools{
                             title: "打卡",
                             desp: '',
                         }
-                        if (res.result) sendWechat.desp = "打卡成功！";
-                        else sendWechat.desp = "打卡失败";
+                        if (res.result) sendWechat.desp = "打卡成功！" + res;
+                        else sendWechat.desp = "打卡失败" + res;
                         // SEN TO WECHAT
                         let sw = new Net(Net.wechat);
                         sw.post(`${server}.send`, sendWechat, true).then(() => {});

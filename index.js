@@ -16,7 +16,7 @@ const data = {
     'jzdXian.dm':	'430104',
     'jzdDz':	`学校`,
     'jzdDz2':	`湖南省长沙市`,
-    'lxdh':	`   `,
+    'lxdh':	`18569545194`,
     'sfzx':	'1',
     'sfzx1':	`在校`,
     'twM.dm': "01",
@@ -36,9 +36,9 @@ const data = {
     'jrStzk1':`身体健康、无异常`,
     'jrJccry.dm':	'01',
     'jrJccry1':	`未接触传染源`,
-    'jkm': "",
+    'jkm': "1",
     'jkm1': "",
-    'xcm': "",
+    'xcm': "1",
     'xcm1': "",
     'xgym': "",
     'xgym1': "",
@@ -64,7 +64,20 @@ function handle() {
     }
 }
 
-handle();
+const  scheduleCronstyle = ()=>{
+    //every day 7:random:30
+    random = Math.floor(Math.random() * 60);
+    schedule.scheduleJob(`30 ${random} 7 * * *`,()=>{
+        handle();
+    });
+}
 
+scheduleCronstyle();
+
+
+// exports.handle = (event,context,callback)=>{
+//     handle();
+//     callback(null,"copy!");
+// }
 
 
