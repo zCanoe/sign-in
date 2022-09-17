@@ -68,7 +68,7 @@ function handle() {
         })
     }
 }
-// handle();
+handle();
 const  scheduleCronstyle = ()=>{
     //every day 7:random:30
     random = Math.floor(Math.random() * 60);

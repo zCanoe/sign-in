@@ -49,14 +49,14 @@ class tools{
                 });
                 data.zzdk_token = token;
                 net.post(Net.submit, data, true).then(res => {
-                    res = JSON.parse(res);
+                    res = JSON.parse(res.toString());
                     console.log(res);
                     let sendWechat = {
                         title: "打卡",
                         desp: '',
                     }
-                    if (res.result) sendWechat.desp = "打卡成功！" + res;
-                    else sendWechat.desp = "打卡失败" + res;
+                    if (res.result) sendWechat.desp = "打卡成功！" + res.toString();
+                    else sendWechat.desp = "打卡失败" + res.toString();
                     // SEN TO WECHAT
                     let sw = new Net(Net.wechat);
                     sw.post(`${server}.send`, sendWechat, true).then(() => {
