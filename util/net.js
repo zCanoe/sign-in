@@ -36,7 +36,6 @@ class Net {
         });
         if (savecookie && res.headers.has("set-cookie"))
             await this.setCookie(res.headers.get("set-cookie"));
-
         return res.text();
     }
     async getJSON(page, query) {
@@ -100,7 +99,7 @@ Net.parseCookies = function (cookies) {
     }
     return obj;
 };
-Net.UserAgent = "Mozilla/5.0 (Linux; U; Android 8.1.0; zh-cn; BLA-AL00 Build/HUAWEIBLA-AL00) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/57.0.2987.132 MQQBrowser/8.9 Mobile Safari/537.36";
+Net.UserAgent = "Mozilla/5.0 (iPhone; CPU iPhone OS 13_2_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.0.3 Mobile/15E148 Safari/604.1 Edg/105.0.0.0";
 Net.login = "/website/login";
 Net.submit = `/content/student/temp/zzdk?_t_s_=${new Date().getTime()}`;
 Net.list = `content/tabledata/student/temp/zzdk?bSortable_0=false&bSortable_1=true&iSortingCols=1&iDisplayStart=0&iDisplayLength=12&iSortCol_0=1&sSortDir_0=desc`

@@ -2,6 +2,7 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
 const Net = require("./net");
 const md5 = require("md5")
 const Student = require("./student");
+const cheerio = require('cheerio');
 
 class tools{
 
@@ -19,7 +20,7 @@ class tools{
                 pd_mm: this.getPW(),
             },
             true
-        ).then(res => console.log("res",res));
+        ).then(() => {});
         student.cookie = ((await net.getCookies()).split(";"))[0];
     }
 
@@ -37,22 +38,30 @@ class tools{
 
     async attend(student, server, data) {
         await this.login(student).then(()=> {
-            console.log("name", student.cookie);
+            // console.log("name", student.cookie);
             let net = new Net("https://xsgz.hufe.edu.cn");
-            net.setCookie(student.cookie).then(() => {
-                    net.post(Net.submit, data, true).then(res => {
-                        res = JSON.parse(res);
-                        console.log(res);
-                        let sendWechat = {
-                            title: "打卡",
-                            desp: '',
-                        }
-                        if (res.result) sendWechat.desp = "打卡成功！" + res;
-                        else sendWechat.desp = "打卡失败" + res;
-                        // SEN TO WECHAT
-                        let sw = new Net(Net.wechat);
-                        sw.post(`${server}.send`, sendWechat, true).then(() => {});
-                    })
+            net.setCookie(student.cookie).then(async () => {
+                let token;
+                await net.get(`/wap/menu/student/temp/zzdk/_child_/edit`, {_t_s: `${new Date().getTime()}`}, 1).then(res => {
+                    // 获取token
+                    let $ = cheerio.load(res);
+                    token = $(`#zzdk_token`).val();
+                });
+                data.zzdk_token = token;
+                net.post(Net.submit, data, true).then(res => {
+                    res = JSON.parse(res);
+                    console.log(res);
+                    let sendWechat = {
+                        title: "打卡",
+                        desp: '',
+                    }
+                    if (res.result) sendWechat.desp = "打卡成功！" + res;
+                    else sendWechat.desp = "打卡失败" + res;
+                    // SEN TO WECHAT
+                    let sw = new Net(Net.wechat);
+                    sw.post(`${server}.send`, sendWechat, true).then(() => {
+                    });
+                })
             }).catch(Error => console.log(Error))
         })
     }
