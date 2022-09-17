@@ -4,9 +4,9 @@ const tools = require("./util/tools");
 const schedule = require('node-schedule');
 
 const serverJiang = [`SCT130875TSgPUOfcSHwpzmfvVttjsP1dG`,]; //server酱
-const user = [`202108210336`,`202108210518`];
-const pwd = [`hufe@187157`,`hufe@137539`];
-const phone = [`18569545194`, `17673922210`];
+const user = [`2021082`,`2021082`];
+const pwd = [`hufe@`,`hufe@`];
+const phone = [``, ``];
 const data = {
     'dkdz':	`湖南省长沙市 岳麓区 咸嘉湖街道学仕路湖南财政经济学院`,
     'dkdzZb': '112.944352,28.224494',
@@ -19,7 +19,7 @@ const data = {
     'jzdXian.dm':	'430104',
     'jzdDz':	`学校`,
     'jzdDz2':	`湖南省长沙市`,
-    'lxdh':	`18569545194`,
+    'lxdh':	``,
     'sfzx':	'1',
     'sfzx1':	`在校`,
     'twM.dm': "01",
