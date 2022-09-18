@@ -3,8 +3,8 @@ const Net = require("./util/net")
 const tools = require("./util/tools");
 const schedule = require('node-schedule');
 
-const serverJiang = [`SCT130875TSgPUOfcSHwpzmfvVttjsP1dG`,]; //server酱
-const user = [`2021082`,`2021082`];
+const serverJiang = [`SdG`,]; //server酱
+const user = [`2`,`202`];
 const pwd = [`hufe@`,`hufe@`];
 const phone = [``, ``];
 const data = {
