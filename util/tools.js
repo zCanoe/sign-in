@@ -1,7 +1,6 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0"
 const Net = require("./net");
 const md5 = require("md5")
-const Student = require("./student");
 const cheerio = require('cheerio');
 
 class tools{
@@ -13,7 +12,7 @@ class tools{
 
     async login(student) {
         let net = new Net("https://xsgz.hufe.edu.cn");
-        let info = await net.post(
+        await net.post(
             `${Net.login}`,
             {
                 uname: this.username,
@@ -37,10 +36,9 @@ class tools{
     }
 
     async attend(student, server, data) {
-        await this.login(student).then(()=> {
-            // console.log("name", student.cookie);
+        this.login(student).then(()=> {
             let net = new Net("https://xsgz.hufe.edu.cn");
-            net.setCookie(student.cookie).then(async () => {
+            net.setCookie(student.cookie).then( async () => {
                 let token;
                 await net.get(`/wap/menu/student/temp/zzdk/_child_/edit`, {_t_s: `${new Date().getTime()}`}, 1).then(res => {
                     // 获取token
@@ -49,18 +47,18 @@ class tools{
                 });
                 data.zzdk_token = token;
                 net.post(Net.submit, data, true).then(res => {
-                    res = JSON.parse(res.toString());
-                    console.log(res);
+                    console.log(JSON.stringify(res));
                     let sendWechat = {
                         title: "打卡",
                         desp: '',
                     }
-                    if (res.result) sendWechat.desp = "打卡成功！" + res.toString();
-                    else sendWechat.desp = "打卡失败" + res.toString();
+                    if (res.result) sendWechat.desp = "打卡成功！" + JSON.stringify(res);
+                    else sendWechat.desp = "打卡失败" + JSON.stringify(res);
                     // SEN TO WECHAT
                     let sw = new Net(Net.wechat);
                     sw.post(`${server}.send`, sendWechat, true).then(() => {
                     });
+                    return res;
                 })
             }).catch(Error => console.log(Error))
         })
