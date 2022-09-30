@@ -1,6 +1,7 @@
 const Student = require("./util/student")
+const Net = require("./util/net")
 const tools = require("./util/tools");
-const schedule = require("node-schedule");
+const schedule = require('node-schedule');
 
 let serverJiang = [`SCT130875TSgPUOfcSHwpzmfvVttjsP1dG`,]; //server酱
 let user = [`202108210336`,`202108210518`, `202108210337`];
@@ -72,6 +73,7 @@ const  scheduleCronstyle = ()=>{
 }
 
 scheduleCronstyle();
+
 
 // exports.handle = (event,context,callback)=>{
 //     handle();
