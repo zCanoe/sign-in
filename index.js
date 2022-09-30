@@ -3,10 +3,10 @@ const Net = require("./util/net")
 const tools = require("./util/tools");
 const schedule = require('node-schedule');
 
-let serverJiang = [`SCT130875TSgPUOfcSHwpzmfvVttjsP1dG`,]; //server酱
-let user = [`202108210336`,`202108210518`, `202108210337`];
-let pwd = [`hufe@187157`,`hufe@137539`, `hufe@12451X`];
-let phone = [`18569545194`, `17673922210`, `18817005309`];
+let serverJiang = [``,]; //server酱
+let user = [``,];
+let pwd = [``,];
+let phone = [``,];
 
 function handle() {
     for (let index = 0; index < (user).length; index++) {
