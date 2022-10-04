@@ -13,11 +13,11 @@ function handle() {
         let tools1 = new tools('', '');
         let student = new Student('', '');
         let data = {
-            'dkdz':	`湖南省长沙市 岳麓区 咸嘉湖街道学仕路湖南财政经济学院`,
+            'dkdz':	``,
             'dkdzZb': '112.944352,28.224494',
             'dkly':	`lbs`,
             'zzdk_token': '',
-            "dkd":	`湖南省长沙市`,
+            "dkd":	`市`,
             "jzdValue":	`430000,430100,430104`,
             "jzdSheng.dm" :	"430000",
             'jzdShi.dm': '430100',
